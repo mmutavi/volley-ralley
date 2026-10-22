@@ -1,2 +1,3 @@
 const $=s=>document.querySelector(s),court=$('#court'),ball=$('#ball'),BEST='volley.best.v2',STREAK='volley.streak.v2';let running=false,progress=0,direction=1,score=0,streak=0,last=0,speed=.00015,raf=0;
 $('#best').textContent=localStorage.getItem(BEST)||localStorage.getItem('volley.best')||'0';$('#best-streak').textContent=localStorage.getItem(STREAK)||'0';
+function message(text){$('#message').textContent=text}
