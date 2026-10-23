@@ -2,4 +2,4 @@ const $=s=>document.querySelector(s),court=$('#court'),ball=$('#ball'),BEST='vol
 $('#best').textContent=localStorage.getItem(BEST)||localStorage.getItem('volley.best')||'0';$('#best-streak').textContent=localStorage.getItem(STREAK)||'0';
 function message(text){$('#message').textContent=text}
 function draw(now=performance.now()){const span=direction===1?15+progress*70:85-progress*70,y=25+Math.sin(progress*Math.PI)*40;ball.style.left=`${span}%`;ball.style.top=`${y}%`;ball.classList.toggle('pulse',progress>.78&&progress<.95);$('#round').textContent=`Rally ${score+1}`}
-function frame(now){if(!running)return;if(!last)last=now;progress+=(now-last)*speed;last=now;if(progress>=1){progress=1;draw(now);end('Too late — the ball hit the floor.')}else{draw(now);const 
+function frame(now){if(!running)return;if(!last)last=now;progress+=(now-last)*speed;last=now;if(progress>=1){progress=1;draw(now);end('Too late — the ball hit the floor.')}else{draw(now);const x=direction===1?15+progress*70:85-progress*70,near=direction===1?x>67:x<33;$('#timing').textContent=near?'NOW':'—';if(near)message('Your side — find the timing window.');raf=requestAnimationFrame(frame)}}
